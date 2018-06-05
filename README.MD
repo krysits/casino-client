@@ -1,4 +1,4 @@
-#kazino-client
+#casino-client
 ###Casino Client App
 
 Slot Machine in modern JavaScript (ES6).
