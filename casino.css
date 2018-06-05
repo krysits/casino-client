@@ -1,0 +1,52 @@
+body * {
+	box-sizing: border-box;
+}
+
+.display-field {
+	margin: 10px 20% auto;
+}
+
+.display-field .img-responsive{
+	border: 2px #eee solid;
+}
+
+.dashboard-field {
+	margin: 10px;
+}
+
+.info-field {
+	margin: 10px;
+}
+
+.line {
+	width: 100%;
+	display: inline-block;
+	clear: both;
+}
+
+.d-block {
+	float: left;
+}
+
+#result {
+	background-color: #FFEFD5;
+	color: #7B68EE;
+}
+
+.result-box {
+	background-color: #fff;
+	font-size: 30px;
+	font-family: Arial, sans-serif;
+	font-weight: bolder;
+	border-radius: 5px;
+	border: 2px #666 solid;
+	color: #000;
+	padding: 10px;
+}
+
+#casino {
+	width: 100%;
+	border: 2px #666 solid;
+	border-radius: 5px;
+	background-color: #eee;
+}

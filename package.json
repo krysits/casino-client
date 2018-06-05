@@ -1,0 +1,25 @@
+{
+  "name": "kazino-client",
+  "version": "1.0.0",
+  "description": "Casino Client App in ES6",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "ajax",
+    "nodejs",
+    "php",
+    "html5",
+    "css3",
+    "bootstrap"
+  ],
+  "author": "@krysits.com",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1"
+  }
+}
