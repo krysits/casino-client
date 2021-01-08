@@ -1,18 +1,18 @@
-"use strict";
-
 $(document).ready(function(){
     new SimpleSlotMachine();
 });
 
 class SimpleSlotMachine {
 
-	constructor(){
+	constructor()
+	{
 		this.init();
 		this.setupOnClicks();
 		this.getResult();
 	}
 
-	init(){
+	init()
+	{
 		this.hash = '';
 		this.currentBet = 1;
 		this.currentLines = 1;
@@ -25,7 +25,8 @@ class SimpleSlotMachine {
 		this.imgDir = 'img';
 	}
 
-	setupOnClicks(){
+	setupOnClicks()
+	{
 		$(document).on('click', '.auto-start', this.automatic.bind(this));
 		$(document).on('click', '.bet-one', this.betOne.bind(this));
 		$(document).on('click', '.bet-max', this.betMax.bind(this));
@@ -34,13 +35,15 @@ class SimpleSlotMachine {
 		$(document).on('click', '.spin', this.spin.bind(this));
 	}
 
-	getResult() {
+	getResult()
+	{
 		this.getInfoDisplay();
 		$('#result').text(this.result);
 		return this.result;
 	}
 
-	getInfoDisplay() {
+	getInfoDisplay()
+	{
 		let msg = 'bet: ' + this.currentBet +
 			' | lines: ' + this.currentLines +
 			' | total bet: ' + this.currentTotal +
@@ -49,10 +52,11 @@ class SimpleSlotMachine {
 		console.log(msg);
 	}
 
-	updateDisplay(){
+	updateDisplay()
+	{
 		$('.display-field .img-responsive').each(
 			(index,element) => {
-				$(element).css('border', '2px #eee solid');
+				$(element).css('border', '2px #000 solid');
 				$(element).attr('src', this.imgDir + '/' + this.hash[index] + '.png');
 				if(this.winFields.includes(index)){
 					$(element).css('border', '2px #ff0000 solid');
@@ -60,7 +64,8 @@ class SimpleSlotMachine {
 			});
 	}
 
-	updateWins(){
+	updateWins()
+	{
 		let vectors = new WinLineVectors(this.hash);
 		let wins = vectors.getWins(this.currentLines);
 		if(wins){
@@ -74,8 +79,9 @@ class SimpleSlotMachine {
 		return false;
 	}
 
-	getSound(action){
-		let sound = null;
+	getSound(action)
+	{
+		let sound;
 		switch(action) {
 			case 'stop':
 				sound = new Audio('sound/1.mp3');
@@ -95,34 +101,45 @@ class SimpleSlotMachine {
 	}
 
 	// slot machine basic operations
-	betOne(){
+	betOne()
+	{
 		this.currentBet = (this.currentBet % 10) + 1;
 		this.setTotalBet();
 		this.getInfoDisplay();
 		return this.currentBet;
 	}
-	betMax(){
+
+	betMax()
+	{
 		this.currentBet = 10;
 		this.setTotalBet();
 		this.getInfoDisplay();
 		return this.currentBet;
 	}
-	setTotalBet(){
+
+	setTotalBet()
+	{
 		return this.currentTotal = this.currentBet * this.currentLines;
 	}
-	linesOne(){
+
+	linesOne()
+	{
 		this.currentLines = (this.currentLines % 9) + 1;
 		this.setTotalBet();
 		this.getInfoDisplay();
 		return this.currentLines;
 	}
-	linesMax(){
+
+	linesMax()
+	{
 		this.currentLines = 9;
 		this.setTotalBet();
 		this.getInfoDisplay();
 		return this.currentLines;
 	}
-	static getDemoHash(len){
+
+	static getDemoHash(len)
+	{
 		let salt = '';
 		if(!len) len = 100;
 		for(let i=0;i<len;i++){
@@ -130,7 +147,9 @@ class SimpleSlotMachine {
 		}
 		return md5(salt);
 	}
-	getSpin(){
+
+	getSpin()
+	{
 		this.hash = SimpleSlotMachine.getDemoHash(100);
 		this.getSound();
 		this.updateWins();
@@ -138,7 +157,9 @@ class SimpleSlotMachine {
 		this.getResult();
 		this.getSound('stop');
 	}
-	spin(){
+
+	spin()
+	{
 		this.winFields = [];
 		if(!this.availableFunds()) {
 			this.autoSpin = false;
@@ -153,19 +174,24 @@ class SimpleSlotMachine {
 		this.getResult();
 		if(this.autoSpin) this.automatic();
 	}
-	automatic(){
+
+	automatic()
+	{
 		this.autoSpin = true;
 		setTimeout(this.spin.bind(this), 1500);
 	}
-	availableFunds(){
+
+	availableFunds()
+	{
 		return ((this.currentCredit - this.currentTotal) >= 0);
 	}
 
-};
+}
 
 class WinLineVectors {
 
-	constructor(hash){
+	constructor(hash)
+	{
 
 		this.hash = hash;
 
@@ -184,7 +210,8 @@ class WinLineVectors {
 		this.winFields = [];
 	}
 
-	getWins(currentLines){
+	getWins(currentLines)
+	{
 		let winAmount = 0;
 		for(let i=1;i<=currentLines;i++){
 			let vector = this.indexTable[(i-1)];
@@ -200,32 +227,31 @@ class WinLineVectors {
 		return winAmount;
 	}
 
-	getWinCountVector(vector){
+	getWinCountVector(vector)
+	{
 
 		if(
-			this.hash[vector[0]] == this.hash[vector[1]] &&
-			this.hash[vector[1]] == this.hash[vector[2]] &&
-			this.hash[vector[2]] == this.hash[vector[3]] &&
-			this.hash[vector[3]] == this.hash[vector[4]]
+			this.hash[vector[0]] === this.hash[vector[1]] &&
+			this.hash[vector[1]] === this.hash[vector[2]] &&
+			this.hash[vector[2]] === this.hash[vector[3]] &&
+			this.hash[vector[3]] === this.hash[vector[4]]
 		) return 5;
 
 		if(
-			this.hash[vector[0]] == this.hash[vector[1]] &&
-			this.hash[vector[1]] == this.hash[vector[2]] &&
-			this.hash[vector[2]] == this.hash[vector[3]]
+			this.hash[vector[0]] === this.hash[vector[1]] &&
+			this.hash[vector[1]] === this.hash[vector[2]] &&
+			this.hash[vector[2]] === this.hash[vector[3]]
 		) return 4;
 
 		if(
-			this.hash[vector[0]] == this.hash[vector[1]] &&
-			this.hash[vector[1]] == this.hash[vector[2]]
+			this.hash[vector[0]] === this.hash[vector[1]] &&
+			this.hash[vector[1]] === this.hash[vector[2]]
 		) return 3;
 
 		if(
-			this.hash[vector[0]] == this.hash[vector[1]]
+			this.hash[vector[0]] === this.hash[vector[1]]
 		) return 2;
 
 		return 0;
-
 	}
-
-};
+}

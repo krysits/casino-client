@@ -1,7 +1,7 @@
 {
-  "name": "kazino-client",
-  "version": "1.0.0",
-  "description": "Casino Client App in ES6",
+  "name": "casino-client",
+  "version": "1.9.0",
+  "description": "Casino Slots",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,11 +15,10 @@
     "css3",
     "bootstrap"
   ],
-  "author": "@krysits.com",
+  "author": "@krysits.COM",
   "license": "MIT",
   "dependencies": {
-    "babel-core": "^6.26.3",
-    "bootstrap": "^4.1.1",
-    "jquery": "^3.3.1"
+    "bootstrap": "^5.0.0-beta1",
+    "jquery": "^3.5.1"
   }
 }

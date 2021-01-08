@@ -2,12 +2,16 @@ body * {
 	box-sizing: border-box;
 }
 
+body {
+	background-color: #000;
+}
+
 .display-field {
 	margin: 10px 20% auto;
 }
 
 .display-field .img-responsive{
-	border: 2px #eee solid;
+	border: 2px #000 solid;
 }
 
 .dashboard-field {
@@ -15,7 +19,7 @@ body * {
 }
 
 .info-field {
-	margin: 10px;
+	margin: 5px;
 }
 
 .line {
@@ -29,24 +33,24 @@ body * {
 }
 
 #result {
-	background-color: #FFEFD5;
+	background-color: #000;
 	color: #7B68EE;
 }
 
 .result-box {
-	background-color: #fff;
+	background-color: #000;
 	font-size: 30px;
 	font-family: Arial, sans-serif;
 	font-weight: bolder;
 	border-radius: 5px;
-	border: 2px #666 solid;
-	color: #000;
-	padding: 10px;
+	border: 2px #000 solid;
+	color: green;
+	padding: 5px;
 }
 
 #casino {
 	width: 100%;
 	border: 2px #666 solid;
 	border-radius: 5px;
-	background-color: #eee;
+	background-color: #000;
 }
