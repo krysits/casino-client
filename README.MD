@@ -11,8 +11,8 @@ Use DemoSlotMachine to test out this unique App.
 Dependencies must be installed with __npm install__ :
 * JQuery
 * Bootstrap
-* Babel-Core
 
+(c) 2021 Facelift and EOL
 (c) 2018 Kristaps Ledins aka [@krysits.COM](http://krysits.com)
 
 Licensed under [MIT License](../blob/master/LICENSE)
